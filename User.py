@@ -1,15 +1,16 @@
 
 class User:
-    name="no name"
-    surname="no surname"
-    
-    task_list= []
 
-    #DEUDA TECNICA: en el constructor permitir crear la lista directamente o vacia
+    # Declaración de variables de estado con valores por defecto
+    # La variable task_list, además de ser declarada, se inicializa como una lista vacía
+    name = ""
+    surname = ""
+    task_list = []
+    
+    # Con el constructor, inicializamos el resto de variables de estado. 
     def __init__(self, name, surname) -> None:
         self.name = name
         self.surname = surname
-
 
 
     def get_name(self):
@@ -24,20 +25,21 @@ class User:
             self.surname = new_surname
         
 
-    # Funciones que permiten agregar y eliminar una tarea
+    # Métodos que operan sobre una tarea:
+    # Permiten agregar una nueva
     def add_new_task(self, new_task):
         self.task_list.append(new_task)
-
+    # Elimina una tarea existente por su índice en la lista
     def remove_task(self, task_index):
         self.task_list.pop(task_index)
 
 
-    # Lista de tareas
+    # Métodos de la lista de tareas:
     # Getter
     def get_task_list(self):
         return self.task_list
 
-    # Función que devulve un String formateado en que las tareas se presentan enumeradas según el orden de inserción
+    # Función que devuelve un String formateado de las tareas enumeradas según el orden de inserción
     def get_task_list_to_string(self):
 
         if len(self.task_list) == 0:
@@ -51,12 +53,6 @@ class User:
         return list_to_string
 
 
-
-    # def __str__(self) -> str:
-    #     str_con_el_resultado = 'Objeto de deportes: '
-    #     for deporte in self.listado_deportes:
-    #         str_con_el_resultado += "\n  * {}".format(deporte)
-    #     return str_con_el_resultado
-
+    # Sobreescribimos el método str para obtener información del User
     def __str__(self):
         return f"\nNombre completo: {self.name} {self.surname}\n{self.get_task_list_to_string()}\n"

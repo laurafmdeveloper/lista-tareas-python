@@ -13,21 +13,23 @@ lisa = User('Lisa', 'Simpson')
  
  
  
-print("Homer no tiene tareas") 
+print("- Homer no tiene tareas -") 
 print(homer.get_task_list_to_string())
 
-print("Añadimos 3 tareas añadidas a Homer")
+print("- Añadimos 3 tareas a la lista de Homer -")
 homer.add_new_task(t3) 
 homer.add_new_task(t2) 
 homer.add_new_task(t1)
-print("nº de tareas de Homer: ", (len(homer.get_task_list())) )
 print(homer.get_task_list_to_string())
-homer.remove_task(1)
-print("tarea borrada")
-print("nº de tareas de Homer: ", (len(homer.get_task_list())) )
+
+print("\n- Nº de tareas de Homer: ", (len(homer.get_task_list())), "-" )
+
+homer.remove_task(2)
+print("- Tarea borrada -")
+print("- Nº de tareas de Homer: ", (len(homer.get_task_list())), "-" ) 
 
 
-print( '\n\n**************'  )
+print( '\n\n******** BORRAR pero mantener como test de formatos( ojo task y user que queden los 2 bien ******'  )
 
 print( '\n\nstr(homer)'  )
 print(str(homer))
