@@ -24,14 +24,7 @@ print(homer.get_task_list_to_string())
 
 print("\n- Nº de tareas de Homer: ", (len(homer.get_task_list())), "-" )
 
-homer.remove_task(2)
-print("- Tarea borrada -")
+is_removed = homer.remove_task(2)
+print(f"- ¿Se ha eliminado correctamente la tarea?: {is_removed} -") 
 print("- Nº de tareas de Homer: ", (len(homer.get_task_list())), "-" ) 
 
-
-print( '\n\n******** BORRAR pero mantener como test de formatos( ojo task y user que queden los 2 bien ******'  )
-
-print( '\n\nstr(homer)'  )
-print(str(homer))
-print( 'str(t2)'  )
-print(str(t2))

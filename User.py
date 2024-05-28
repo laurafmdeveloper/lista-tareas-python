@@ -28,17 +28,19 @@ class User:
 
  
     # Elimina una tarea existente dado su índice en la lista
-    # Utilizamos la estructura 'try except' para manejar el error que lanzaría 
-    # un index fuera de rango
+    # Utilizamos la estructura 'try except' para manejar el error que lanzaría un index fuera de rango
+    # Devuelve un booleano
     def remove_task(self, task_index):
         try:
             if 0 <= task_index < len(self.task_list):
                 self.task_list.pop(task_index)
+                return True # Informa de que la tarea se ha eliminado correctamente
             else:
                 raise IndexError("Índice fuera de rango.")
         except IndexError as e:
             print(f"Error: {e}")
-
+            return False # Informa de que la tarea no se ha podido eliminar
+  
 
     # Métodos de la lista de tareas:
     # Getter
