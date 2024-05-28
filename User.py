@@ -1,16 +1,11 @@
 
 class User:
 
-    # Declaración de variables de estado con valores por defecto
-    # La variable task_list, además de ser declarada, se inicializa como una lista vacía
-    name = ""
-    surname = ""
-    task_list = []
-    
-    # Con el constructor, inicializamos el resto de variables de estado. 
+    # Con el constructor, declaramos e inicializamos las variables de estado. 
     def __init__(self, name, surname) -> None:
         self.name = name
-        self.surname = surname
+        self.surname = surname 
+        self.task_list = []             # Por defecto, task_list se crea como una lista vacía
 
 
     def get_name(self):
@@ -29,9 +24,20 @@ class User:
     # Permiten agregar una nueva
     def add_new_task(self, new_task):
         self.task_list.append(new_task)
-    # Elimina una tarea existente por su índice en la lista
+
+
+ 
+    # Elimina una tarea existente dado su índice en la lista
+    # Utilizamos la estructura 'try except' para manejar el error que lanzaría 
+    # un index fuera de rango
     def remove_task(self, task_index):
-        self.task_list.pop(task_index)
+        try:
+            if 0 <= task_index < len(self.task_list):
+                self.task_list.pop(task_index)
+            else:
+                raise IndexError("Índice fuera de rango.")
+        except IndexError as e:
+            print(f"Error: {e}")
 
 
     # Métodos de la lista de tareas:
@@ -43,12 +49,11 @@ class User:
     def get_task_list_to_string(self):
 
         if len(self.task_list) == 0:
-            return f"El usuario {self.name} no tiene ningún elemento en su lista"
+            return f"El usuario {self.name} no tiene ninguna tarea en su lista"
 
         list_to_string = f"Lista de {self.name}:\n"
-        
         for index, task in enumerate(self.task_list):
-            list_to_string  += "\t{0}) {1}\n".format((index+1), str(task)) 
+            list_to_string  += "\t{0}) {1}\n".format((index + 1), str(task)) 
         
         return list_to_string
 
